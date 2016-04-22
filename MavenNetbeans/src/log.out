@@ -1,0 +1,18 @@
+10:41:07.820 [main] TRACE apachedoc.log4j.ApacheDoc - Entering application.
+10:41:07.824 [main] TRACE apachedoc.log4j.Bar - entry
+10:41:07.824 [main] TRACE apachedoc.log4j.Bar - entry
+10:41:07.825 [main] ERROR apachedoc.log4j.Bar - Did it again!
+10:41:07.825 [main] ERROR apachedoc.log4j.Bar - Did it again!
+10:41:07.825 [main] TRACE apachedoc.log4j.Bar - exit with(false)
+10:41:07.825 [main] TRACE apachedoc.log4j.Bar - exit with(false)
+10:41:07.825 [main] ERROR apachedoc.log4j.ApacheDoc - Didn't do it.
+10:41:07.825 [main] TRACE apachedoc.log4j.ApacheDoc - Exiting application.
+10:43:44.550 [main] TRACE apachedoc.log4j.ApacheDoc - Entering application.
+10:43:44.554 [main] TRACE apachedoc.log4j.Bar - entry
+10:43:44.554 [main] TRACE apachedoc.log4j.Bar - entry
+10:43:44.555 [main] ERROR apachedoc.log4j.Bar - Did it again!
+10:43:44.555 [main] ERROR apachedoc.log4j.Bar - Did it again!
+10:43:44.555 [main] TRACE apachedoc.log4j.Bar - exit with(false)
+10:43:44.555 [main] TRACE apachedoc.log4j.Bar - exit with(false)
+10:43:44.555 [main] ERROR apachedoc.log4j.ApacheDoc - Didn't do it.
+10:43:44.555 [main] TRACE apachedoc.log4j.ApacheDoc - Exiting application.

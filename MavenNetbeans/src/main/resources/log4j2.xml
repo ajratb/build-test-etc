@@ -10,7 +10,7 @@ and open the template in the editor.
     <Console name="Console" target="SYSTEM_OUT">
       <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
     </Console>
-    <File name="File" fileName="src/log.out">
+    <File name="File" fileName="src/main/resources/log.out">
     
          <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
     </File>
