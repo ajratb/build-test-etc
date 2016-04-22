@@ -22,7 +22,7 @@ public class TutorialsPoint {
 
     public static void main(String[] args) {
         ApplicationContext context
-                = new ClassPathXmlApplicationContext("Beans.xml");
+                = new ClassPathXmlApplicationContext("beans.xml");
 
         log.info("Going to create HelloWord Obj");
 
