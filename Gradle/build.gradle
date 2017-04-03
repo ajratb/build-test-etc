@@ -1,0 +1,16 @@
+task hello {
+doLast{ 
+println 'Dady at home'
+}
+}
+
+task hello2 <<{ 
+println 'Big dady says hello'
+}
+
+
+5.times { counter ->
+task "task$counter" << {
+println "I'm task number $counter"
+}
+}
