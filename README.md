@@ -1,5 +1,3 @@
-# mvn
+# build
 
-This repo created for my maven study projects
-
-Also I work here with other maven projects sources
+This repo created for building systems study
