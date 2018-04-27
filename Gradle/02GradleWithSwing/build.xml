@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="03 SwingAnt" basedir="." default="compile">
+
+    <property name="src.dir" value="src" />
+    <property name="classes.dir" value="classes" />
+    <property name="main-class" value="ru.npopm.chess715.FirstClass" />
+    <path id="classpath">
+        <pathelement location="./" />
+        <pathelement location="${classes.dir}" />
+    </path>
+
+    <target name="compile" depends="clean-sample">
+        <mkdir dir="${classes.dir}"/>
+   
+        <javac srcdir="${src.dir}" destdir="${classes.dir}"
+               classpathref="classpath" />
+    </target>
+    
+    <target name="run" depends="compile">
+        <echo message="Running class : ${main-class}"/>
+        <java classname="${main-class}" fork="true">
+            <classpath>
+                <path refid="classpath" />
+            </classpath>
+        </java>
+    </target>
+    
+    <target name="clean-sample">
+        <delete dir="${classes.dir}" />
+        
+    </target>
+    
+    <target name="build-jar">
+        <jar destfile="dist/StudyAnt.jar"
+             basedir="classes">
+            <manifest>
+                <attribute name="Main-Class" value="ru.npopm.chess715.FirstClass"/>
+            </manifest>
+
+        </jar>
+    </target> 
+</project>
