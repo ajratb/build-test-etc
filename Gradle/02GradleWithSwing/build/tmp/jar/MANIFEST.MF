@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Main-Class: ru.npopm.chess715.FirstClass
