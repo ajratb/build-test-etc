@@ -8,8 +8,9 @@ public class Service{
 		return "start-app says hello!";
 	}
 	
-	public static void main() {
+	public static void main(String[] args) {
 		Logger lg = LoggerFactory.getLogger(Service.class);
 		lg.debug("debug msg!");
+		System.out.println(new Service().getMessage());
 	}
 }
