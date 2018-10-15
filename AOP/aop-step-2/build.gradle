@@ -1,6 +1,16 @@
+buildscript{
+    project.ext {
+        aspectjVersion = '1.9.1'
+    }
+}
+    
 plugins {
     id 'java'
+    id 'application'
+    id 'aspectj.gradle' version '0.1.6'
 }
+
+mainClassName = 'topor.Service'
 
 group 'topor'
 version '1.0-SNAPSHOT'
@@ -13,5 +23,7 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile group: 'org.aspectj', name: 'aspectjrt', version:'1.8.2'
+    compile group: 'org.aspectj', name: 'aspectjrt', version:'1.9.1'
+    compile group: 'org.aspectj', name: 'aspectjweaver', version:'1.9.1'
 }
+
