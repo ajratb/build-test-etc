@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'no.tornado:fxlauncher-gradle-plugin:1.0.20'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'no.tornado.fxlauncher'
+
+//plugins {
+//  id 'java'
+//  id 'no.tornado.fxlauncher' version '1.0.20'
+//}
+
+
+repositories {
+    mavenCentral()
+}
+
+fxlauncher {
+    applicationVendor 'My Company'
+    applicationMainClass 'waytosky.MainApp'
+    applicationUrl 'installer' 
+//    deployTarget 'targer'
+
+}
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'waytosky.MainApp'
+}
