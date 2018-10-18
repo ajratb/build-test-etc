@@ -1,0 +1,14 @@
+-source
+1.8
+-target
+1.8
+-d
+/home/ayrat/JAVA/build_test_etc/Gradle/simple-javafx/build/classes/java/main
+-g
+-sourcepath
+""
+-proc:none
+-XDuseUnsharedTable=true
+-classpath
+""
+/home/ayrat/JAVA/build_test_etc/Gradle/simple-javafx/src/main/java/waytosky/SimpleJavaFX.java
