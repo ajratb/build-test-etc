@@ -1,7 +1,21 @@
-apply plugin: "java"
+plugins {
+	id 'java'
+	id 'application'//add run task
+}
 
 repositories{mavenCentral()}
 
 dependencies {
 	compile 'org.slf4j:slf4j-api:1.7.25'
+}
+
+mainClassName = 'waytosky.Service'
+
+jar {//for jar taskА
+  manifest {
+    attributes(
+//      'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+      'Main-Class': 'waytosky.Service'
+    )
+  }
 }
