@@ -6,6 +6,6 @@ public class Service {
     }
     
     public static void main(String[] args) {
-        new Service().showMessage("one two three fout");
+        new Service().showMessage("secret message content");
     }
 }
