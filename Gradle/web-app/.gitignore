@@ -1,0 +1,18 @@
+/.gradle/
+/build/
+/bin/
+/out/
+
+
+# eclipse project file
+.settings/
+.classpath
+.project
+
+# IntelliJ project files 
+*.iml
+*.iws
+*.ipr
+.idea/
+
+.attach_pid*
