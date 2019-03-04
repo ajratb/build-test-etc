@@ -1,0 +1,4 @@
+MavenNetbeans - old project: -  see if it can be removed
+javafx - don't use. Use netbeans suggestion !
+
+Compare work with spring
