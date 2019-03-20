@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="https://deloved/soap-api" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="LoginSearcherService" targetNamespace="https://deloved/soap-api">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://deloved/soap-api" elementFormDefault="qualified" targetNamespace="https://deloved/soap-api" version="1.0">
+
+  <xs:element name="TLoginUser" type="tns:userLoginData"/>
+
+  <xs:element name="TLoginUsers" type="tns:userLoginList"/>
+
+  <xs:complexType name="userLoginList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="list" type="tns:userLoginData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="userLoginData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dept" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="patronymic" type="xs:string"/>
+      <xs:element minOccurs="0" name="position" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="shortName" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="userLoginEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lastActivity" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="pwdHash" type="xs:string"/>
+      <xs:element minOccurs="0" name="tmpCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="tmpStartTime" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="runCacheUpdate">
+  </wsdl:message>
+  <wsdl:message name="getApplicationVersionResponse">
+    <wsdl:part name="return" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendEmail4Employee">
+    <wsdl:part name="empId" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="Subject" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="Text" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendEmail4EmployeeResponse">
+    <wsdl:part name="return" type="xsd:boolean">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getApplicationProfile">
+  </wsdl:message>
+  <wsdl:message name="getLoginUsers">
+    <wsdl:part name="aPart" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="maxResults" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmployeeWorkEmail">
+    <wsdl:part name="empId" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getApplicationVersion">
+  </wsdl:message>
+  <wsdl:message name="sendCode2EmailResponse">
+    <wsdl:part name="return" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLoginUsersResponse">
+    <wsdl:part name="return" type="tns:userLoginList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendCode2Email">
+    <wsdl:part name="empId" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="IP" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userStatus">
+    <wsdl:part name="empId" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="changePasswordResponse">
+    <wsdl:part name="return" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="changePassword">
+    <wsdl:part name="empId" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="newPwdHash" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="tmpCode" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmployeeWorkEmailResponse">
+    <wsdl:part name="return" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getApplicationProfileResponse">
+    <wsdl:part name="return" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userStatusResponse">
+    <wsdl:part name="return" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TLoginSearcherService">
+    <wsdl:operation name="runCacheUpdate">
+      <wsdl:input message="tns:runCacheUpdate" name="runCacheUpdate">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="sendCode2Email">
+      <wsdl:input message="tns:sendCode2Email" name="sendCode2Email">
+    </wsdl:input>
+      <wsdl:output message="tns:sendCode2EmailResponse" name="sendCode2EmailResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEmail4Employee">
+      <wsdl:input message="tns:sendEmail4Employee" name="sendEmail4Employee">
+    </wsdl:input>
+      <wsdl:output message="tns:sendEmail4EmployeeResponse" name="sendEmail4EmployeeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userStatus">
+      <wsdl:input message="tns:userStatus" name="userStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:userStatusResponse" name="userStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApplicationProfile">
+      <wsdl:input message="tns:getApplicationProfile" name="getApplicationProfile">
+    </wsdl:input>
+      <wsdl:output message="tns:getApplicationProfileResponse" name="getApplicationProfileResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLoginUsers">
+      <wsdl:input message="tns:getLoginUsers" name="getLoginUsers">
+    </wsdl:input>
+      <wsdl:output message="tns:getLoginUsersResponse" name="getLoginUsersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changePassword">
+      <wsdl:input message="tns:changePassword" name="changePassword">
+    </wsdl:input>
+      <wsdl:output message="tns:changePasswordResponse" name="changePasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeWorkEmail">
+      <wsdl:input message="tns:getEmployeeWorkEmail" name="getEmployeeWorkEmail">
+    </wsdl:input>
+      <wsdl:output message="tns:getEmployeeWorkEmailResponse" name="getEmployeeWorkEmailResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApplicationVersion">
+      <wsdl:input message="tns:getApplicationVersion" name="getApplicationVersion">
+    </wsdl:input>
+      <wsdl:output message="tns:getApplicationVersionResponse" name="getApplicationVersionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LoginSearcherServiceSoapBinding" type="tns:TLoginSearcherService">
+    <soap12:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="runCacheUpdate">
+      <soap12:operation soapAction="" style="rpc"/>
+      <wsdl:input name="runCacheUpdate">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="sendCode2Email">
+      <soap12:operation soapAction="" style="rpc"/>
+      <wsdl:input name="sendCode2Email">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendCode2EmailResponse">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEmail4Employee">
+      <soap12:operation soapAction="" style="rpc"/>
+      <wsdl:input name="sendEmail4Employee">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendEmail4EmployeeResponse">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userStatus">
+      <soap12:operation soapAction="" style="rpc"/>
+      <wsdl:input name="userStatus">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userStatusResponse">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApplicationProfile">
+      <soap12:operation soapAction="" style="rpc"/>
+      <wsdl:input name="getApplicationProfile">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getApplicationProfileResponse">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLoginUsers">
+      <soap12:operation soapAction="" style="rpc"/>
+      <wsdl:input name="getLoginUsers">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLoginUsersResponse">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changePassword">
+      <soap12:operation soapAction="" style="rpc"/>
+      <wsdl:input name="changePassword">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="changePasswordResponse">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeWorkEmail">
+      <soap12:operation soapAction="" style="rpc"/>
+      <wsdl:input name="getEmployeeWorkEmail">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEmployeeWorkEmailResponse">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApplicationVersion">
+      <soap12:operation soapAction="" style="rpc"/>
+      <wsdl:input name="getApplicationVersion">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getApplicationVersionResponse">
+        <soap12:body namespace="https://deloved/soap-api" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LoginSearcherService">
+    <wsdl:port binding="tns:LoginSearcherServiceSoapBinding" name="LoginSearcherServicePort">
+      <soap12:address location="http://s715-23-vm:8080/soap-api/LoginSearcher"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

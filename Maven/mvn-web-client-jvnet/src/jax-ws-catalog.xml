@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://s715-23-vm:8080/soap-api/LoginSearcher?wsdl" uri="wsdl/s715-23-vm_8080/soap-api/LoginSearcher.wsdl"/>
+</catalog>
