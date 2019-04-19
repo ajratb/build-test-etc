@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Implementation-Title: chancellery-client
+X-COMMENT: Main-Class will be added automatically by build
+Implementation-Version: 1.0
+Permissions: sandbox
+Codebase: *
+JavaFX-Version: 8.0
+Class-Path: lib/commons-logging-1.2.jar lib/controlsfx-8.40.14.jar lib
+ /ext-components.jar lib/fontawesomefx-8.9.jar lib/io-7.1.1.jar lib/ja
+ vax.mail-1.6.0.jar lib/jfoenix.jar lib/jna-4.5.1.jar lib/jna-platform
+ -4.5.1.jar lib/kernel-7.1.1.jar lib/layout-7.1.1.jar lib/logback-clas
+ sic-1.2.3.jar lib/logback-core-1.2.3.jar lib/slf4j-api-1.7.25.jar
+Created-By: JavaFX Packager
+Implementation-Vendor: ayrat
+Main-Class: ru.iss.chancellery.chess715.MainApp
+
