@@ -6,7 +6,14 @@ package wts.service;
  */
 public class WtsService {
 
-    private String msg;
+    private final String msg;
+
+    public WtsService(String msg) {
+        this.msg = msg;
+    }
+    
+    
+    
     public String getMessage(){
         
         return msg;

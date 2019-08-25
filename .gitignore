@@ -6,3 +6,4 @@
 /**/target/
 /**/.idea/
 *.iml
+/Modules/NbModularApplication/build/
