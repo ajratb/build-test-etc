@@ -6,5 +6,5 @@
  *
  */
 module com.demo {
-	requires com.operators;
+    requires com.operators;
 }
