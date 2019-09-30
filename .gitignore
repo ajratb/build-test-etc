@@ -1,13 +1,12 @@
 */.nb-gradle/
 
-*/build/
 
+*/build/
 /**/nbproject/private/
+
 /**/target/
+
 /**/.idea/
+
 *.iml
-/Modules/NbModularApplication/build/
-/Modules/calculator/build/
-/Modules/calculator-client/build/
-/Modules/calculator/dist/
-/Modules/calculator-client/dist/
+
