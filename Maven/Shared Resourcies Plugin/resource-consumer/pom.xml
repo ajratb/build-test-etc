@@ -15,20 +15,23 @@
                 <artifactId>maven-remote-resources-plugin</artifactId>
                 <version>1.6.0</version>
                 <configuration>
+                    <!--<runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>-->
                     <resourceBundles>
                         <resourceBundle>ru.waytosky:shared-resources:${project.version}</resourceBundle>
                     </resourceBundles>
-                    <!--                    <attachToMain>true</attachToMain>-->
+                    <attachToMain>true</attachToMain>
                     <outputDirectory>${project.build.directory}/maven-shared-archive-resources</outputDirectory>
-                </configuration>
+                </configuration>      
                 <executions>
                     <execution>
+                        <id>process-remote-resources</id>
                         <goals>
                             <goal>process</goal>
                         </goals>
-
+                        
                     </execution>
                 </executions>
+                
             </plugin>
 
         </plugins>
