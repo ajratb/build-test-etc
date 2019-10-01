@@ -1,12 +1,14 @@
-*/.nb-gradle/
-
-
-*/build/
+# Netbeans
+/**/.nb-gradle/
+/**/build/
 /**/nbproject/private/
+/**/dist/
 
+# Maven
+/**/log/
 /**/target/
 
+# Intellij
 /**/.idea/
-
 *.iml
-
+*.iws
