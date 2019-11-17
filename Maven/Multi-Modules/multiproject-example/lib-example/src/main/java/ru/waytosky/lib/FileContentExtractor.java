@@ -22,11 +22,11 @@ public class FileContentExtractor {
         return new String(cbuf);
     }
     
-//    public static void main(String[] args) throws IOException, URISyntaxException {
-//        FileContentExtractor extractor = new FileContentExtractor();
-//        
-//        String result = extractor.getContent();
-//        System.out.println(result);
-//    }
+    public static void main(String[] args) throws IOException, URISyntaxException {
+        FileContentExtractor extractor = new FileContentExtractor();
+
+        String result = extractor.getContent();
+        System.out.println(result);
+    }
    
 }

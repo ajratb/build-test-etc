@@ -1,1 +1,1 @@
-*in lib-example module resource
+hello my friend!
