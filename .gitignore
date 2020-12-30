@@ -23,4 +23,7 @@
 
 # Eclipse
 /**/.classpath
-Maven/eclipse-mvn-project/.classpath
+
+#VS Code
+/**/.project
+/**/.settings
