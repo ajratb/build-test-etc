@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="greeter.GreetingFormatterSpec" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-10-21T15:50:16" hostname="ayrat-wbook" time="0.044">
+<testsuite name="greeter.GreetingFormatterSpec" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-09T02:44:22" hostname="nok2-test1" time="0.121">
   <properties/>
-  <testcase name="Creating a greeting" classname="greeter.GreetingFormatterSpec" time="0.044"/>
+  <testcase name="Creating a greeting" classname="greeter.GreetingFormatterSpec" time="0.121"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
