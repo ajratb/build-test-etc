@@ -1,0 +1,7 @@
+= Getting Started
+
+== basic demo
+old sample
+
+== java-app
+https://docs.gradle.org/current/samples/sample_building_java_applications.html

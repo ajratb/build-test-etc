@@ -1,3 +1,0 @@
-https://guides.gradle.org/building-java-applications/
-
-java-app>gradle init --type java-application
