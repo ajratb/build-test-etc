@@ -1,7 +1,9 @@
 = Getting Started
 
-== basic demo
-old sample
-
 == java-app
 https://docs.gradle.org/current/samples/sample_building_java_applications.html
+
+== basic-demo
+base application sample(not java, plugin_id = 'base')
+
+contains copy and zip tasks
