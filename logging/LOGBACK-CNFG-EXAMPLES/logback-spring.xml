@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <configuration scan="true"> -->
+<configuration>
+
+    <!--    <property  resource="application.properties" />-->
+    <!--    <property name="LOGS" value="./logs" />-->
+    <property name="PROP_VALUE" value="ABCDEF"/>
+
+    <!-- use Spring default values -->
+    <include
+            resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <!--	<include resource="./logback-file-appender.xml" />-->
+
+    <springProperty name="appName" source="spring.application.name"/>
+
+    <appender name="JSON_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+<!--        <encoder>-->
+<!--            <pattern>${CONSOLE_LOG_PATTERN}</pattern>-->
+<!--            <charset>utf8</charset>-->
+<!--        </encoder>-->
+        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+            <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter"/>
+            <timestampFormat>yyyy-MM-dd HH:mm:ss.SSS</timestampFormat>
+            <!--
+            Don't include timestamp since field name conflicts with one from kubernetes.
+            Hint: use `kubectl logs -timestamps` or kibana to see logs with timestamps.
+            -->
+            <includeTimestamp>false</includeTimestamp>
+            <includeContextName>false</includeContextName>
+            <appendLineSeparator>true</appendLineSeparator>
+        </layout>
+    </appender>
+
+    <appender name="mdc_stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <layout>
+            <Pattern>%-4r [%thread] %-5level %c{1} obj_id:%X{object.id} - %msg%n</Pattern>
+        </layout>
+<!--        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--            <pattern>%-4r [%t] %5p %c{1} - obj.id=%X{object.id}: %m%n</pattern>-->
+<!--        </encoder>-->
+    </appender>
+
+    <appender name="STASH_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"appname":"plmgate2-cm-tst-ru1-app-dev", "app_name":"${appName}", "someValue":"some_value", "propValue":"${PROP_VALUE}"}</customFields>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <springProfile name="!k8s">
+            <appender-ref ref="JSON_STDOUT"/>
+        </springProfile>
+        <springProfile name="k8s">
+            <appender-ref ref="JSON_STDOUT"/>
+<!--            <appender-ref ref="STASH_STDOUT"/>-->
+        </springProfile>
+    </root>
+
+</configuration>
