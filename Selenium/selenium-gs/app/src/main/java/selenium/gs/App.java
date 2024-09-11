@@ -4,24 +4,15 @@
 package selenium.gs;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.PageLoadStrategy;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.bidi.BiDi;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v128.network.Network;
 import org.openqa.selenium.devtools.v128.network.model.RequestId;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 public class App {
@@ -29,110 +20,22 @@ public class App {
         return "Hello World!";
     }
 
-//    private static ThreadLocal<ChromeDriver> driverHolder = new ThreadLocal<ChromeDriver>();
-
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         System.out.println(new App().getGreeting());
-        System.setProperty("webdriver.chrome.silentOutput", "true");
-        java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
 
-        ChromeOptions handlingSSL = new ChromeOptions();
-        handlingSSL.setAcceptInsecureCerts(true);
-//        handlingSSL.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-//        handlingSSL.enableBiDi();
-
-//        driverHolder.set(new ChromeDriver(handlingSSL));
-        ChromeDriver driver = new ChromeDriver(handlingSSL);
-        DevTools devTools = driver.getDevTools();
-        devTools.createSession();
-
-        devTools.send(Network.enable(
-                Optional.of(500000000),
-                Optional.of(500000000),
-                Optional.of(500000000)));
-
-//        devTools.addListener(Network.responseReceived(), responseReceived -> {
-//            String responseUrl = responseReceived.getResponse().getUrl();
-//
-//            if ("https://10.177.111.184/ureg/query?".equals(responseUrl)) {
-////                System.out.println("Url: " + responseUrl);
-//                System.out.println("Response headers: " + responseReceived.getResponse().getHeaders().toString());
-//                RequestId requestId = responseReceived.getRequestId();
-//
-//                String body = devTools.send(Network.getResponseBody(requestId)).getBody();
-//                System.out.println("Response body: " + body);
-//            }
-//        });
-
-        devTools.addListener(Network.requestWillBeSent(), request -> {
-            String url = request.getRequest().getUrl();
-            if ("https://10.177.111.184/ureg/query?".equals(url)) {
-//                System.out.println("Request URL : " + url);
-//                System.out.println("Request Method : " + request.getRequest().getMethod());
-                System.out.println(Thread.currentThread().getName());
-                System.out.println("Request headers: " + request.getRequest().getHeaders().toString());
-                RequestId requestId = request.getRequestId();
-                System.out.println("Request body: " + devTools.send(Network.getRequestPostData(requestId)));
+        SeleniumExecutor executor = new SeleniumExecutor();
+        executor.waiter = () -> {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        });
+        };
 
-        driver.get("https://10.177.111.184/ureg/#");
+        new Thread(executor).start();
 
-        String title = driver.getTitle();
-        System.out.println("Driver title: " + title);
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(3000));
-//        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-//        wait.until(d -> revealed.isDisplayed());
-        driver.findElement(By.xpath("//a[@href='#']")).click();
-
-        WebElement loginBox = driver.findElement(By.name("login"));
-        WebElement passwordBox = driver.findElement(By.name("password"));
-        WebElement inputButton = driver.findElement(By.xpath("//input[@type='submit']"));
-
-        loginBox.sendKeys("kubryakova.e");
-        passwordBox.sendKeys("fjr9fdlDXxf394");
-        inputButton.click();
-
-        String currHandle = driver.getWindowHandle();
-        System.out.println("Window is: " + currHandle);
-        driver.switchTo().window(currHandle);
-
-        WebElement managerLink = driver.findElement(By.xpath("//*[contains(text(), 'Менеджер ссылок')]"));
-
-        managerLink.click();
-
-        String currHandle2 = driver.getWindowHandle();
-        System.out.println("Window is: " + currHandle2);
-
-//        Object[] windowHandles = driver.getWindowHandles().toArray();
-//        System.out.println("Windows count: " + windowHandles.length);
-        //driver.switchTo().window((String) windowHandles[1]);
-        driver.switchTo().window(currHandle2);
-        WebElement exitLink = driver.findElement(By.xpath("//*[contains(text(), 'Электронные СМИ и СМК')]"));
-//        for (int i = 0; i < 1000; i++)
-            exitLink.click();
-
-//        synchronized (exitLink) {
-//            try {
-//                exitLink.wait(5000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
-        //driver.close();
-//        devTools.close();
-
-//        Thread.sleep(30000);
-//        System.out.println(fib(42));
-        driver.quit();
-
-        System.out.println("THE END");
     }
 
-    private static int fib(int value) {
-        if (value == 0) return 0;
-        if (value == 1) return 1;
-        return fib(value - 1) + fib(value - 2);
-    }
+
 }
